@@ -1,22 +1,26 @@
 export default function WatchPage() {
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Ray'sStream Player</h1>
+    <main style={{ padding: "24px", fontFamily: "Arial, sans-serif" }}>
+      <h1>Ray’sStream Player UPDATED</h1>
 
       <video
-        width="100%"
-        height="400"
         controls
         autoPlay
-        muted
         loop
-        style={{ backgroundColor: "black" }}
+        muted
+        playsInline
+        style={{
+          width: "100%",
+          maxWidth: "900px",
+          height: "360px",
+          backgroundColor: "black",
+          borderRadius: "12px",
+        }}
       >
         <source src="/videos/spaceship.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
 
-      <h3>Watching:</h3>
-    </div>
+      <p>Watching: spaceship.mp4</p>
+    </main>
   );
 } 
