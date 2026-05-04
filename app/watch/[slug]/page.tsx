@@ -1,3 +1,3 @@
 export default function Page() {
-  return <video controls autoPlay loop muted src="/spaceship.mp4" />;
+  return <h1>Ray’sStream Home</h1>;
 } 
