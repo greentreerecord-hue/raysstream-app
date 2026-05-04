@@ -1,47 +1,100 @@
-import { notFound } from "next/navigation"
+"use client"
 
-type Props = {
-  params: { slug: string }
+import { useState } from "react"
+
+type Comment = {
+  name: string
+  text: string
 }
 
-export default function WatchPage({ params }: Props) {
-  const { slug } = params
+export default function WatchPage() {
+  const [commentText, setCommentText] = useState("")
+  const [comments, setComments] = useState<Comment[]>([
+    { name: "Ray", text: "Welcome to Ray'sStream 🚀" },
+  ])
 
-  // simple demo video map
-  const videos: Record<string, string> = {
-    spaceship: "/videos/spaceship.mp4",
-    demo: "/videos/demo.mp4",
-  }
+  function addComment() {
+    if (!commentText.trim()) return
 
-  const videoSrc = videos[slug]
+    setComments([
+      { name: "Guest", text: commentText },
+      ...comments,
+    ])
 
-  if (!videoSrc) {
-    return notFound()
+    setCommentText("")
   }
 
   return (
-    <div style={{ padding: "20px", color: "white" }}>
-      <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>
-        {slug}
-      </h1>
+    <main style={{ padding: 24, fontFamily: "Arial, sans-serif" }}>
+      <h1>Ray&apos;sStream Watch Page</h1>
 
-      <video
-        src={videoSrc}
-        controls
-        autoPlay
-        loop
+      <div
+        style={{
+          background: "#111",
+          color: "white",
+          height: 260,
+          borderRadius: 16,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 24,
+          marginBottom: 20,
+        }}
+      >
+        Video box paused for now
+      </div>
+
+      <h2>Spaceship Demo</h2>
+      <p>Views: 1,234</p>
+
+      <button style={{ marginRight: 10 }}>👍 Like</button>
+      <button>Subscribe</button>
+
+      <hr style={{ margin: "24px 0" }} />
+
+      <h2>Comments</h2>
+
+      <textarea
+        value={commentText}
+        onChange={(e) => setCommentText(e.target.value)}
+        placeholder="Add a comment..."
         style={{
           width: "100%",
-          maxWidth: "900px",
-          borderRadius: "10px",
+          minHeight: 80,
+          padding: 12,
+          fontSize: 16,
+          borderRadius: 10,
         }}
       />
 
-      <div style={{ marginTop: "15px" }}>
-        <p>Views: 1,234</p>
-        <button style={{ marginRight: "10px" }}>👍 Like</button>
-        <button>Subscribe</button>
+      <br />
+
+      <button
+        onClick={addComment}
+        style={{
+          marginTop: 10,
+          padding: "10px 16px",
+          borderRadius: 8,
+          cursor: "pointer",
+        }}
+      >
+        Comment
+      </button>
+
+      <div style={{ marginTop: 24 }}>
+        {comments.map((comment, index) => (
+          <div
+            key={index}
+            style={{
+              padding: 12,
+              borderBottom: "1px solid #ddd",
+            }}
+          >
+            <strong>{comment.name}</strong>
+            <p>{comment.text}</p>
+          </div>
+        ))}
       </div>
-    </div>
+    </main>
   )
 } 
