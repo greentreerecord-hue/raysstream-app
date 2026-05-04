@@ -14,19 +14,26 @@ export default function Home() {
   const [viewCounts, setViewCounts] = useState<Record<string, number>>({})
 
   useEffect(() => {
-    videos.forEach(async (video) => {
-      const res = await fetch("/api/views", {
-        method: "POST",
-        body: JSON.stringify({ id: video.id }),
-      })
+    const loadViews = async () => {
+      for (const video of videos) {
+        const res = await fetch("/api/views", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: video.id }),
+        })
 
-      const data = await res.json()
+        const data = await res.json()
 
-      setViewCounts((prev) => ({
-        ...prev,
-        [video.id]: data.views,
-      }))
-    })
+        setViewCounts((prev) => ({
+          ...prev,
+          [video.id]: data.views,
+        }))
+      }
+    }
+
+    loadViews()
   }, [])
 
   return (
@@ -59,7 +66,6 @@ export default function Home() {
 
             <h2 style={{ marginTop: 10 }}>{video.title}</h2>
 
-            {/* 👇 REAL VIEWS HERE */}
             <p style={{ color: "#aaa", marginTop: 5 }}>
               {viewCounts[video.id] ?? 0} views
             </p>
@@ -68,4 +74,5 @@ export default function Home() {
       </div>
     </main>
   )
+} 
 } 
