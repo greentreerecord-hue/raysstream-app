@@ -4,6 +4,7 @@ export default function WatchPage() {
       <h1>Ray’sStream Player</h1>
 
       <video
+        src="/videos/spaceship.mp4"
         controls
         autoPlay
         loop
@@ -17,14 +18,9 @@ export default function WatchPage() {
           borderRadius: "16px",
           display: "block",
         }}
-      >
-        <source src="/spaceship.mp4" type="video/mp4" />
-        <source src="/videos/spaceship.mp4" type="video/mp4" />
-        Your browser does not support video.
-      </video>
+      />
 
       <h2>Watching: Spaceship</h2>
-      <p>Ray’sStream test video</p>
     </main>
   );
 } 
