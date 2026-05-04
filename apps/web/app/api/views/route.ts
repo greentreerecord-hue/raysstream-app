@@ -1,20 +1,71 @@
-let views: Record<string, number> = {}
+"use client"
 
-export async function POST(req: Request) {
-  const { id } = await req.json()
+import { useEffect, useState } from "react"
 
-  if (!views[id]) views[id] = 0
+const videos = [
+  {
+    id: "video1",
+    title: "Spaceship",
+    file: "/videos/test.mp4",
+  },
+]
 
-  views[id] += 1
+export default function Home() {
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({})
 
-  return Response.json({ views: views[id] })
-}
+  useEffect(() => {
+    videos.forEach(async (video) => {
+      const res = await fetch("/api/views", {
+        method: "POST",
+        body: JSON.stringify({ id: video.id }),
+      })
 
-export async function GET(req: Request) {
-  const url = new URL(req.url)
-  const id = url.searchParams.get("id") || "test"
+      const data = await res.json()
 
-  return Response.json({
-    views: views[id] || 0,
-  })
-}
+      setViewCounts((prev) => ({
+        ...prev,
+        [video.id]: data.views,
+      }))
+    })
+  }, [])
+
+  return (
+    <main
+      style={{
+        padding: 20,
+        background: "#111",
+        color: "white",
+        minHeight: "100vh",
+      }}
+    >
+      <h1>Ray&apos;sStream 🔥</h1>
+      <p>It&apos;s Cool</p>
+
+      <div style={{ marginTop: 30 }}>
+        {videos.map((video) => (
+          <div key={video.id} style={{ marginBottom: 40 }}>
+            <video
+              src={video.file}
+              controls
+              muted
+              autoPlay
+              style={{
+                width: "100%",
+                maxWidth: "650px",
+                borderRadius: "12px",
+                background: "black",
+              }}
+            />
+
+            <h2 style={{ marginTop: 10 }}>{video.title}</h2>
+
+            {/* 👇 REAL VIEWS HERE */}
+            <p style={{ color: "#aaa", marginTop: 5 }}>
+              {viewCounts[video.id] ?? 0} views
+            </p>
+          </div>
+        ))}
+      </div>
+    </main>
+  )
+} 
