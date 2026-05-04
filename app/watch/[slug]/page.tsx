@@ -4,7 +4,7 @@ export default function WatchPage() {
       <h1>Ray'sStream Player</h1>
 
       <video
-        src="/video.mp4" // ⚠️ change this if your file name is different
+        src="/videos/spaceship.mp4"
         controls
         autoPlay
         loop
@@ -15,7 +15,9 @@ export default function WatchPage() {
           borderRadius: "12px",
           backgroundColor: "black"
         }}
-      />
+      >
+        Your browser does not support the video tag.
+      </video>
 
       <h3 style={{ marginTop: "20px" }}>Watching:</h3>
     </div>
