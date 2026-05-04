@@ -1,45 +1,47 @@
-"use client"
-import { useState } from "react"
+import { notFound } from "next/navigation"
 
-export default function WatchPage() {
-  const [comments, setComments] = useState<string[]>([])
-  const [input, setInput] = useState("")
+type Props = {
+  params: { slug: string }
+}
 
-  const addComment = () => {
-    if (!input.trim()) return
-    setComments([input, ...comments])
-    setInput("")
+export default function WatchPage({ params }: Props) {
+  const { slug } = params
+
+  // simple demo video map
+  const videos: Record<string, string> = {
+    spaceship: "/videos/spaceship.mp4",
+    demo: "/videos/demo.mp4",
+  }
+
+  const videoSrc = videos[slug]
+
+  if (!videoSrc) {
+    return notFound()
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Ray'sStream Player</h1>
+    <div style={{ padding: "20px", color: "white" }}>
+      <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>
+        {slug}
+      </h1>
 
-      <video width="800" height="450" controls />
+      <video
+        src={videoSrc}
+        controls
+        autoPlay
+        loop
+        style={{
+          width: "100%",
+          maxWidth: "900px",
+          borderRadius: "10px",
+        }}
+      />
 
-      {/* COMMENTS SECTION */}
-      <h2 style={{ marginTop: "30px" }}>Comments</h2>
-
-      <div style={{ marginBottom: "10px" }}>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Add a comment..."
-          style={{ padding: "10px", width: "300px" }}
-        />
-        <button onClick={addComment} style={{ marginLeft: "10px" }}>
-          Post
-        </button>
-      </div>
-
-      <div>
-        {comments.map((c, i) => (
-          <p key={i} style={{ borderBottom: "1px solid #ccc", padding: "5px" }}>
-            {c}
-          </p>
-        ))}
+      <div style={{ marginTop: "15px" }}>
+        <p>Views: 1,234</p>
+        <button style={{ marginRight: "10px" }}>👍 Like</button>
+        <button>Subscribe</button>
       </div>
     </div>
   )
-}
 } 
