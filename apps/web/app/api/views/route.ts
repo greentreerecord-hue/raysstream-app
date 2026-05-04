@@ -1,53 +1,11 @@
-"use client";
+import { NextResponse } from "next/server";
 
-import { useEffect, useState } from "react";
+let views = 0;
 
-export default function WatchPage() {
-  const [views, setViews] = useState<number>(0);
+export async function GET() {
+  views = views + 1;
 
-  useEffect(() => {
-    async function loadViews() {
-      const res = await fetch("/api/views", {
-        cache: "no-store",
-      });
-
-      const data = await res.json();
-      setViews(data.views);
-    }
-
-    loadViews();
-  }, []);
-
-  return (
-    <main
-      style={{
-        background: "#111",
-        color: "white",
-        minHeight: "100vh",
-        padding: 20,
-      }}
-    >
-      <h1>Ray&apos;sStream</h1>
-
-      <video
-        src="/videos/spaceship.mp4"
-        controls
-        autoPlay
-        loop
-        muted
-        style={{
-          width: "100%",
-          maxWidth: 900,
-          borderRadius: 12,
-          background: "black",
-        }}
-      />
-
-      <h2>Spaceship Video</h2>
-
-      <p style={{ fontSize: 18 }}>
-        👁️ {views} views
-      </p>
-    </main>
-  );
+  return NextResponse.json({
+    views: views,
+  });
 }
