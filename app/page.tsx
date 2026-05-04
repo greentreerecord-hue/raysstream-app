@@ -4,13 +4,13 @@ export default function HomePage() {
       title: "First Video",
       channel: "Ray",
       views: "1M",
-      thumbnail: "/thumbnails/first.jpg",
+      thumbnail: "https://picsum.photos/500/300?1",
     },
     {
       title: "Second Video",
       channel: "Ray",
       views: "500K",
-      thumbnail: "/thumbnails/second.jpg",
+      thumbnail: "https://picsum.photos/500/300?2",
     },
   ];
 
@@ -62,7 +62,6 @@ export default function HomePage() {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  display: "block",
                 }}
               />
             </div>
