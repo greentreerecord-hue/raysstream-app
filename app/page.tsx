@@ -1,5 +1,5 @@
 export default function WatchPage({ params }: { params: { slug: string } }) {
-  const videoUrl = "https://streamable.com/d3yj6q"
+  const videoUrl = "https://cdn.streamable.com/video/mp4/d3yj6q.mp4"
 
   return (
     <div style={{ padding: "20px" }}>
@@ -10,6 +10,8 @@ export default function WatchPage({ params }: { params: { slug: string } }) {
         controls
         autoPlay
         loop
+        muted
+        playsInline
         style={{
           width: "100%",
           maxWidth: "900px",
@@ -20,4 +22,4 @@ export default function WatchPage({ params }: { params: { slug: string } }) {
       <p>Watching: {params.slug}</p>
     </div>
   )
-}
+} 
