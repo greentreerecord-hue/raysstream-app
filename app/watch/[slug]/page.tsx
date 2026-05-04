@@ -1,26 +1,23 @@
 export default function WatchPage() {
   return (
-    <main style={{ padding: "24px", fontFamily: "Arial, sans-serif" }}>
-      <h1>Ray’sStream Player</h1>
+    <div style={{ padding: "20px", maxWidth: "900px", margin: "auto" }}>
+      <h1>Ray'sStream Player</h1>
 
       <video
-        src="/videos/spaceship.mp4"
+        src="/video.mp4" // ⚠️ change this if your file name is different
         controls
         autoPlay
         loop
+        muted
         playsInline
-        preload="auto"
         style={{
           width: "100%",
-          maxWidth: "900px",
-          height: "420px",
-          backgroundColor: "black",
-          borderRadius: "16px",
-          display: "block",
+          borderRadius: "12px",
+          backgroundColor: "black"
         }}
       />
 
-      <h2>Watching: Spaceship</h2>
-    </main>
+      <h3 style={{ marginTop: "20px" }}>Watching:</h3>
+    </div>
   );
 } 
