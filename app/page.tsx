@@ -1,16 +1,16 @@
 export default function HomePage() {
   const videos = [
     {
-      title: "First Video",
+      title: "Spaceship",
       channel: "Ray",
       views: "1M",
-      thumbnail: "https://picsum.photos/500/300?1",
+      video: "/videos/spaceship.mp4",
     },
     {
       title: "Second Video",
       channel: "Ray",
       views: "500K",
-      thumbnail: "https://picsum.photos/500/300?2",
+      video: "/videos/spaceship.mp4",
     },
   ];
 
@@ -52,12 +52,15 @@ export default function HomePage() {
                 aspectRatio: "16 / 9",
                 overflow: "hidden",
                 borderRadius: "12px",
-                background: "#ddd",
+                background: "#000",
               }}
             >
-              <img
-                src={video.thumbnail}
-                alt={video.title}
+              <video
+                src={video.video}
+                autoPlay
+                muted
+                loop
+                playsInline
                 style={{
                   width: "100%",
                   height: "100%",
