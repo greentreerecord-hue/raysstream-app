@@ -1,33 +1,24 @@
-"use client"
-import { useState } from "react"
-
-export default function WatchPage() {
-  const [video, setVideo] = useState("/spaceship.mp4")
-
+export default function HomePage() {
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Ray'sStream Player</h1>
+      <h1>Ray'sStream</h1>
 
-      <video
-        key={video}
-        src={video}
-        controls
-        autoPlay
-        loop
-        muted
-        playsInline
-        onClick={(e) => {
-          e.currentTarget.muted = false
-          e.currentTarget.play()
-        }}
+      <p>Welcome to Ray'sStream</p>
+
+      <a
+        href="/watch/test"
         style={{
-          width: "100%",
-          maxWidth: "900px",
-          borderRadius: "12px"
+          display: "inline-block",
+          marginTop: "20px",
+          padding: "12px 18px",
+          background: "black",
+          color: "white",
+          borderRadius: "10px",
+          textDecoration: "none"
         }}
-      />
-
-      <p>Watching: {video}</p>
+      >
+        Watch Spaceship Video
+      </a>
     </div>
   )
 } 
