@@ -16,6 +16,10 @@ export default function WatchPage() {
         loop
         muted
         playsInline
+        onClick={(e) => {
+          e.currentTarget.muted = false
+          e.currentTarget.play()
+        }}
         style={{
           width: "100%",
           maxWidth: "900px",
@@ -24,12 +28,6 @@ export default function WatchPage() {
       />
 
       <p>Watching: {video}</p>
-
-      <h3>Up Next</h3>
-
-      <button onClick={() => setVideo("/spaceship.mp4")}>
-        Spaceship
-      </button>
     </div>
   )
 } 
