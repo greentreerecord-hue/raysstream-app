@@ -1,3 +1,5 @@
+"use client";
+
 export default function HomePage() {
   return (
     <main style={{ padding: "40px", fontFamily: "Arial, sans-serif" }}>
@@ -52,4 +54,4 @@ export default function HomePage() {
       </div>
     </main>
   );
-} 
+}
