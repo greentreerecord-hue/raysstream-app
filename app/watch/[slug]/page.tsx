@@ -1,10 +1,16 @@
+"use client"
+import { useState } from "react"
+
 export default function WatchPage() {
+  const [video, setVideo] = useState("/spaceship.mp4")
+
   return (
     <div style={{ padding: "20px" }}>
       <h1>Ray'sStream Player</h1>
 
       <video
-        src="/spaceship.mp4"
+        key={video}
+        src={video}
         controls
         autoPlay
         loop
@@ -17,7 +23,13 @@ export default function WatchPage() {
         }}
       />
 
-      <p>Watching: spaceship.mp4</p>
+      <p>Watching: {video}</p>
+
+      <h3>Up Next</h3>
+
+      <button onClick={() => setVideo("/spaceship.mp4")}>
+        Spaceship
+      </button>
     </div>
   )
 } 
