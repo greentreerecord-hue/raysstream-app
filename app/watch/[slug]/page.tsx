@@ -1,12 +1,10 @@
-export default function WatchPage({ params }: { params: { slug: string } }) {
-  const videoUrl = "https://cdn.streamable.com/video/mp4/d3yj6q.mp4"
-
+export default function WatchPage() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Ray'sStream Player</h1>
 
       <video
-        src={videoUrl}
+        src="/spaceship.mp4"
         controls
         autoPlay
         loop
@@ -19,7 +17,7 @@ export default function WatchPage({ params }: { params: { slug: string } }) {
         }}
       />
 
-      <p>Watching: {params.slug}</p>
+      <p>Watching: spaceship.mp4</p>
     </div>
   )
 } 
