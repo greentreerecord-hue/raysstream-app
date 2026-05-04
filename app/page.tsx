@@ -1,65 +1,82 @@
-export default function Home() {
+export default function HomePage() {
   const videos = [
     {
       title: "First Video",
-      views: "1M views",
-      thumbnail: "https://i.imgur.com/8Km9tLL.jpg",
-      slug: "first-video"
+      channel: "Ray",
+      views: "1M",
+      thumbnail: "/thumbnails/first.jpg",
     },
     {
       title: "Second Video",
-      views: "500K views",
-      thumbnail: "https://i.imgur.com/5tj6S7Ol.jpg",
-      slug: "second-video"
+      channel: "Ray",
+      views: "500K",
+      thumbnail: "/thumbnails/second.jpg",
     },
-    {
-      title: "Third Video",
-      views: "250K views",
-      thumbnail: "https://i.imgur.com/3ZQ3Z4Yl.jpg",
-      slug: "third-video"
-    }
   ];
 
   return (
-    <main className="p-6">
-      {/* Header */}
-      <h1 className="text-2xl font-bold">Ray’sStream</h1>
-      <p className="text-gray-500 mb-4">
+    <main style={{ padding: "40px", fontFamily: "Arial, sans-serif" }}>
+      <h1 style={{ fontSize: "32px", marginBottom: "5px" }}>
+        Ray’s<span style={{ fontWeight: "bold" }}>Stream</span>
+      </h1>
+
+      <p style={{ fontSize: "20px", color: "#555", marginBottom: "30px" }}>
         The future of video streaming starts here.
       </p>
 
-      {/* Search */}
       <input
-        type="text"
         placeholder="Search videos..."
-        className="border p-2 w-full mb-6"
+        style={{
+          width: "100%",
+          padding: "14px",
+          fontSize: "18px",
+          marginBottom: "35px",
+          border: "1px solid #999",
+        }}
       />
 
-      {/* Trending */}
-      <h2 className="text-lg font-semibold mb-4">🔥 Trending</h2>
+      <h2 style={{ fontSize: "24px", marginBottom: "20px" }}>🔥 Trending</h2>
 
-      {/* Video Grid */}
-      <div className="grid grid-cols-3 gap-4">
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "24px",
+        }}
+      >
         {videos.map((video) => (
-          <a key={video.slug} href={`/watch/${video.slug}`}>
-            <div>
+          <div key={video.title}>
+            <div
+              style={{
+                width: "100%",
+                aspectRatio: "16 / 9",
+                overflow: "hidden",
+                borderRadius: "12px",
+                background: "#ddd",
+              }}
+            >
               <img
                 src={video.thumbnail}
                 alt={video.title}
-                className="w-full h-40 object-cover rounded-lg"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
               />
-
-              <h3 className="mt-2 font-semibold">
-                {video.title}
-              </h3>
-
-              <p className="text-sm text-gray-500">
-                Ray • {video.views}
-              </p>
             </div>
-          </a>
+
+            <h3 style={{ margin: "10px 0 4px", fontSize: "18px" }}>
+              {video.title}
+            </h3>
+
+            <p style={{ margin: 0, color: "#666" }}>
+              {video.channel} • {video.views} views
+            </p>
+          </div>
         ))}
-      </div>
+      </section>
     </main>
   );
 } 
