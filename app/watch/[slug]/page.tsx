@@ -1,19 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function WatchPage() {
-  const [views, setViews] = useState(8);
   const [subscribed, setSubscribed] = useState(false);
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem("raysstream-its-cool-views");
-    const current = saved ? Number(saved) : 8;
-    const next = current + 1;
-
-    window.localStorage.setItem("raysstream-its-cool-views", String(next));
-    setViews(next);
-  }, []);
 
   return (
     <div style={{ padding: "20px", color: "white" }}>
@@ -30,34 +20,22 @@ export default function WatchPage() {
 
       <h2 style={{ marginTop: "16px" }}>It’s Cool</h2>
 
-      <p style={{ color: "#aaa" }}>{views} views • Just now</p>
+      <p style={{ color: "#aaa" }}>8 views • Just now</p>
 
-      <div
+      <button
+        onClick={() => setSubscribed(!subscribed)}
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          maxWidth: "800px",
-          marginTop: "12px",
+          backgroundColor: subscribed ? "#333" : "white",
+          color: subscribed ? "white" : "black",
+          border: "none",
+          borderRadius: "20px",
+          padding: "10px 18px",
+          fontWeight: "bold",
+          cursor: "pointer",
         }}
       >
-        <span style={{ color: "#aaa" }}>Ray’sChannel</span>
-
-        <button
-          onClick={() => setSubscribed(!subscribed)}
-          style={{
-            backgroundColor: subscribed ? "#333" : "white",
-            color: subscribed ? "white" : "black",
-            border: "none",
-            borderRadius: "20px",
-            padding: "10px 18px",
-            fontWeight: "bold",
-            cursor: "pointer",
-          }}
-        >
-          {subscribed ? "Subscribed" : "Subscribe"}
-        </button>
-      </div>
+        {subscribed ? "Subscribed" : "Subscribe"}
+      </button>
     </div>
   );
-}
+} 
