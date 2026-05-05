@@ -1,22 +1,24 @@
-export default function Page() {
+export default function Home() {
   return (
-    <div style={{ padding: "20px", background: "black", color: "white" }}>
+    <main style={{
+      padding: "20px",
+      color: "white",
+      background: "black",
+      minHeight: "100vh"
+    }}>
       <h1>Ray'sStream 🔥</h1>
+      <p>It's Cool</p>
 
-      {/* Video */}
-      <h2>It's Cool</h2>
       <video
-        src="/videos/itscool.mp4"
+        width="600"
         controls
         autoPlay
         loop
         muted
-        style={{
-          width: "100%",
-          borderRadius: "12px",
-          marginBottom: "20px",
-        }}
-      />
-    </div>
+        style={{ marginTop: "20px", borderRadius: "10px" }}
+      >
+        <source src="/videos/test.mp4" type="video/mp4" />
+      </video>
+    </main>
   );
 } 
