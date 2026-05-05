@@ -1,11 +1,7 @@
-import { NextResponse } from "next/server";
-
 let views = 0;
 
 export async function GET() {
-  views = views + 1;
+  views += 1;
 
-  return NextResponse.json({
-    views: views,
-  });
-}
+  return Response.json({ views });
+} 
