@@ -1,12 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function WatchPage() {
+  const [views, setViews] = useState(0);
   const [subscribed, setSubscribed] = useState(false);
+
+  useEffect(() => {
+    const savedViews = localStorage.getItem("views-its-cool");
+    const currentViews = savedViews ? Number(savedViews) : 0;
+    const newViews = currentViews + 1;
+
+    localStorage.setItem("views-its-cool", String(newViews));
+    setViews(newViews);
+  }, []);
 
   return (
     <div style={{ padding: "20px", color: "white" }}>
+     
       <video
         src="/videos/its-cool.mp4"
         controls
@@ -20,6 +31,10 @@ export default function WatchPage() {
 
       <h2 style={{ marginTop: "16px" }}>It’s Cool</h2>
 
+      <p style={{ color: "#aaa" }}>
+        {views} views • Just now
+      </p>
+
       <div
         style={{
           display: "flex",
@@ -29,9 +44,7 @@ export default function WatchPage() {
           marginTop: "12px",
         }}
       >
-        <span style={{ color: "#aaa", fontSize: "16px" }}>
-          Ray’sChannel
-        </span>
+        <span style={{ color: "#aaa" }}>Ray’sChannel</span>
 
         <button
           onClick={() => setSubscribed(!subscribed)}
@@ -42,13 +55,13 @@ export default function WatchPage() {
             borderRadius: "20px",
             padding: "10px 18px",
             fontWeight: "bold",
-            fontSize: "15px",
             cursor: "pointer",
           }}
         >
           {subscribed ? "Subscribed" : "Subscribe"}
         </button>
       </div>
+
     </div>
   );
 } 
