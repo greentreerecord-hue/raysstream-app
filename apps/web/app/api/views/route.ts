@@ -1,18 +1,8 @@
-{
-  "compilerOptions": {
-    "target": "ES5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve"
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+export async function GET() {
+  return new Response(
+    JSON.stringify({ views: 1 }),
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 } 
