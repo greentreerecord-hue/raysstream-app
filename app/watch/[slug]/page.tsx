@@ -1,34 +1,36 @@
+"use client";
+import { useRef } from "react";
+
 export default function WatchPage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleEnd = () => {
+    // go to next video
+    window.location.href = "/watch/video2";
+  };
+
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#111827",
-        color: "white",
-        padding: "20px",
-      }}
-    >
-      <h1 style={{ fontSize: "26px", fontWeight: "bold", marginBottom: "20px" }}>
-        Ray’sStream 🔥
-      </h1>
+    <main style={{ padding: "20px", background: "#111827", minHeight: "100vh", color: "white" }}>
+      <h1>Ray’sStream 🔥</h1>
 
       <video
+        ref={videoRef}
         src="/videos/its-cool.mp4"
         controls
+        autoPlay
+        muted
         playsInline
+        onEnded={handleEnd}
         style={{
           width: "100%",
-          maxHeight: "520px",
+          maxHeight: "500px",
           background: "black",
           borderRadius: "12px",
         }}
       />
 
-      <h2 style={{ fontSize: "22px", marginTop: "18px" }}>It’s Cool</h2>
-
-      <p style={{ color: "#d1d5db", fontSize: "16px" }}>
-        19 views • Just now
-      </p>
+      <h2>It’s Cool</h2>
+      <p>Auto plays + goes to next video</p>
     </main>
   );
-} 
+}
