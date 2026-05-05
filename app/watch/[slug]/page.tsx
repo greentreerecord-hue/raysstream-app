@@ -1,39 +1,54 @@
-export default async function Page({ params }: { params: { slug: string } }) {
-  const key = `video:${params.slug}:views`;
+"use client";
 
-  const url = process.env.KV_REST_API_URL;
-  const token = process.env.KV_REST_API_TOKEN;
+import { useState } from "react";
 
-  let views = 0;
-
-  if (url && token) {
-    const response = await fetch(`${url}/incr/${key}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      cache: "no-store",
-    });
-
-    const data = await response.json();
-    views = data.result ?? 0;
-  }
+export default function WatchPage() {
+  const [subscribed, setSubscribed] = useState(false);
 
   return (
-    <main style={{ padding: "24px" }}>
-      <h1>Watching: {params.slug}</h1>
-
-      <p style={{ fontSize: "20px", marginBottom: "12px" }}>
-        👁️ {views} views
-      </p>
-
+    <div style={{ padding: "20px", color: "white" }}>
+     
+      {/* 🎬 VIDEO */}
       <video
+        src="/videos/test.mp4"
         controls
-        autoPlay
-        loop
-        muted
-        src="/videos/spaceship.mp4"
-        style={{ width: "100%", maxWidth: "900px" }}
+        style={{ width: "100%", maxWidth: "800px", borderRadius: "10px" }}
       />
-    </main>
+
+      {/* 📝 TITLE */}
+      <h2 style={{ marginTop: "15px" }}>It’s Cool</h2>
+
+      {/* 👤 CHANNEL + SUBSCRIBE */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          maxWidth: "800px",
+        }}
+      >
+        <span style={{ fontSize: "14px", color: "#aaa" }}>
+          Ray’sChannel
+        </span>
+
+        {/* 🔔 SUBSCRIBE BUTTON */}
+        <button
+          onClick={() => setSubscribed(!subscribed)}
+          style={{
+            backgroundColor: subscribed ? "#333" : "white",
+            color: subscribed ? "white" : "black",
+            border: "none",
+            borderRadius: "20px",
+            padding: "10px 18px",
+            fontWeight: "bold",
+            fontSize: "14px",
+            cursor: "pointer",
+          }}
+        >
+          {subscribed ? "Subscribed" : "Subscribe"}
+        </button>
+      </div>
+
+    </div>
   );
 } 
