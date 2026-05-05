@@ -1,10 +1,15 @@
-export default function WatchPage({ params }: { params: { slug: string } }) {
+export default function WatchPage() {
   return (
     <div>
-      <h1>Watching: {params.slug}</h1>
+      <h1>Watching: test</h1>
 
-      <video width="600" controls autoPlay>
-        <source src="/videos/test.mp4" type="video/mp4" />
+      <video
+        width="800"
+        controls
+        autoPlay
+        muted
+      >
+        <source src="/videos/its-cool.mp4" type="video/mp4" />
       </video>
     </div>
   );
