@@ -3,21 +3,20 @@
 import { useEffect, useState } from "react";
 
 export default function WatchPage() {
-  const [views, setViews] = useState(0);
+  const [views, setViews] = useState(8);
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    const savedViews = localStorage.getItem("views-its-cool");
-    const currentViews = savedViews ? Number(savedViews) : 0;
-    const newViews = currentViews + 1;
+    const saved = window.localStorage.getItem("raysstream-its-cool-views");
+    const current = saved ? Number(saved) : 8;
+    const next = current + 1;
 
-    localStorage.setItem("views-its-cool", String(newViews));
-    setViews(newViews);
+    window.localStorage.setItem("raysstream-its-cool-views", String(next));
+    setViews(next);
   }, []);
 
   return (
     <div style={{ padding: "20px", color: "white" }}>
-     
       <video
         src="/videos/its-cool.mp4"
         controls
@@ -31,9 +30,7 @@ export default function WatchPage() {
 
       <h2 style={{ marginTop: "16px" }}>It’s Cool</h2>
 
-      <p style={{ color: "#aaa" }}>
-        {views} views • Just now
-      </p>
+      <p style={{ color: "#aaa" }}>{views} views • Just now</p>
 
       <div
         style={{
@@ -61,7 +58,6 @@ export default function WatchPage() {
           {subscribed ? "Subscribed" : "Subscribe"}
         </button>
       </div>
-
     </div>
   );
-} 
+}
