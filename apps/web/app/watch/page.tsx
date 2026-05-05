@@ -7,8 +7,8 @@ export default function WatchPage() {
         controls
         autoPlay
         width="100%"
-        src="/videos/its-cool.mp4"
       >
+        <source src="/videos/its-cool.mp4" type="video/mp4" />
       </video>
 
     </div>
