@@ -1,15 +1,11 @@
-export default function WatchVideo({ params }: { params: { slug: string } }) {
+export default function WatchPage({ params }: { params: { slug: string } }) {
   return (
-    <div style={{ padding: "20px" }}>
+    <div>
       <h1>Watching: {params.slug}</h1>
 
-      <video
-        src="/videos/its-cool.mp4"
-        controls
-        autoPlay
-        loop
-        style={{ width: "100%", maxWidth: "900px" }}
-      />
+      <video width="600" controls autoPlay>
+        <source src="/videos/test.mp4" type="video/mp4" />
+      </video>
     </div>
   );
 } 
