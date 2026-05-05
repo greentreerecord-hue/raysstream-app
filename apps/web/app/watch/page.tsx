@@ -1,17 +1,16 @@
-export default function WatchPage({ params }: { params: { slug: string } }) {
-  const videoMap: Record<string, string> = {
-    test: "/videos/its-cool.mp4",
-    video1: "/videos/its-cool.mp4",
-  };
-
-  const videoSrc = videoMap[params.slug] || "/videos/its-cool.mp4";
-
+export default function WatchPage() {
   return (
-    <div>
-      <h1>Watching: {params.slug}</h1>
+    <div style={{ padding: "20px" }}>
+      <h1>Ray’sStream</h1>
 
-      <video width="900" controls autoPlay muted>
-        <source src={videoSrc} type="video/mp4" />
+      <video
+        controls
+        autoPlay
+        width="100%"
+        src="/videos/its-cool.mp4"
+      >
       </video>
+
     </div>
   );
+} 
