@@ -1,29 +1,48 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Home() {
+  const [views, setViews] = useState(0);
+
+  useEffect(() => {
+    const savedViews = localStorage.getItem("raysstream_views_itscool");
+    const currentViews = savedViews ? Number(savedViews) : 0;
+    const newViews = currentViews + 1;
+
+    localStorage.setItem("raysstream_views_itscool", String(newViews));
+    setViews(newViews);
+  }, []);
+
   return (
     <main
       style={{
         padding: "20px",
         color: "white",
-        background: "black",
+        background: "#0f0f0f",
         minHeight: "100vh",
+        fontFamily: "Arial",
       }}
     >
-      <h1>Ray'sStream 🔥</h1>
-      <p>It's Cool</p>
+      <h1 style={{ marginBottom: "10px" }}>Ray'sStream 🔥</h1>
 
       <video
-        width="800"
+        width="100%"
         controls
-        preload="metadata"
         style={{
-          marginTop: "20px",
-          borderRadius: "10px",
+          maxWidth: "900px",
+          borderRadius: "12px",
           background: "black",
         }}
       >
         <source src="/videos/itscool.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
+
+      <h2 style={{ marginTop: "15px" }}>It's Cool</h2>
+
+      <p style={{ color: "#aaa", fontSize: "18px" }}>
+        {views} views • Just now
+      </p>
     </main>
   );
-}
+} 
