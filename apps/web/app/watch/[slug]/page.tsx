@@ -4,4 +4,4 @@ export default function WatchPage() {
       <source src="/videos/video2.mp4" type="video/mp4" />
     </video>
   );
-} 
+}
