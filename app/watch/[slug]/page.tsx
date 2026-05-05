@@ -7,31 +7,32 @@ export default function WatchPage() {
 
   return (
     <div style={{ padding: "20px", color: "white" }}>
-     
-      {/* 🎬 VIDEO */}
       <video
-        src="/videos/test.mp4"
+        src="/videos/its-cool.mp4"
         controls
-        style={{ width: "100%", maxWidth: "800px", borderRadius: "10px" }}
+        style={{
+          width: "100%",
+          maxWidth: "800px",
+          borderRadius: "12px",
+          backgroundColor: "black",
+        }}
       />
 
-      {/* 📝 TITLE */}
-      <h2 style={{ marginTop: "15px" }}>It’s Cool</h2>
+      <h2 style={{ marginTop: "16px" }}>It’s Cool</h2>
 
-      {/* 👤 CHANNEL + SUBSCRIBE */}
       <div
         style={{
           display: "flex",
-          alignItems: "center",
           justifyContent: "space-between",
+          alignItems: "center",
           maxWidth: "800px",
+          marginTop: "12px",
         }}
       >
-        <span style={{ fontSize: "14px", color: "#aaa" }}>
+        <span style={{ color: "#aaa", fontSize: "16px" }}>
           Ray’sChannel
         </span>
 
-        {/* 🔔 SUBSCRIBE BUTTON */}
         <button
           onClick={() => setSubscribed(!subscribed)}
           style={{
@@ -41,14 +42,13 @@ export default function WatchPage() {
             borderRadius: "20px",
             padding: "10px 18px",
             fontWeight: "bold",
-            fontSize: "14px",
+            fontSize: "15px",
             cursor: "pointer",
           }}
         >
           {subscribed ? "Subscribed" : "Subscribe"}
         </button>
       </div>
-
     </div>
   );
 } 
