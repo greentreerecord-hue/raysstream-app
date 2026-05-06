@@ -1,6 +1,8 @@
 export default function WatchPage() {
+  const videoPath = "/its-cool.mp4";
+
   return (
-    <main style={{ padding: "20px", background: "#f4f4f4", minHeight: "100vh" }}>
+    <main style={{ padding: 20 }}>
       <h1>Ray’sStream Video Test</h1>
 
       <video
@@ -8,19 +10,23 @@ export default function WatchPage() {
         autoPlay
         muted
         playsInline
+        src={videoPath}
         style={{
           width: "100%",
           maxWidth: "900px",
           background: "black",
-          borderRadius: "12px",
         }}
-      >
-        <source src="/videos/its-cool.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      />
 
-      <h2>Its Cool</h2>
-      <p>Testing video path: /videos/its-cool.mp4</p>
+      <h2>Testing path:</h2>
+      <p>{videoPath}</p>
+
+      <p>
+        Direct file test:{" "}
+        <a href="/its-cool.mp4" target="_blank">
+          /its-cool.mp4
+        </a>
+      </p>
     </main>
   );
 } 
