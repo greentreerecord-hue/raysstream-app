@@ -1,23 +1,6 @@
-"use client";
-
-import { useState } from "react";
-
-export default function WatchPage() {
-  const [subscribers, setSubscribers] = useState(1284);
-  const [subscribed, setSubscribed] = useState(false);
-
-  function handleSubscribe() {
-    if (subscribed) {
-      setSubscribed(false);
-      setSubscribers(subscribers - 1);
-    } else {
-      setSubscribed(true);
-      setSubscribers(subscribers + 1);
-    }
-  }
-
+export default function Page() {
   return (
-    <div
+    <main
       style={{
         background: "#0f0f0f",
         minHeight: "100vh",
@@ -26,83 +9,88 @@ export default function WatchPage() {
         fontFamily: "Arial",
       }}
     >
+      <h1
+        style={{
+          fontSize: "40px",
+          marginBottom: "20px",
+        }}
+      >
+        Ray’sStream Test
+      </h1>
+
       <video
         controls
         autoPlay
         width="100%"
         style={{
-          maxWidth: "900px",
           borderRadius: "12px",
-          display: "block",
-          margin: "0 auto",
+          maxWidth: "1000px",
         }}
       >
         <source src="/videos/its-cool.mp4" type="video/mp4" />
       </video>
 
-      <div
+      <h2
         style={{
-          maxWidth: "900px",
-          margin: "20px auto",
+          marginTop: "20px",
+          fontSize: "28px",
         }}
       >
-        <h1
-          style={{
-            fontSize: "38px",
-            marginBottom: "18px",
-          }}
-        >
-          Ray’sStream Test Video
-        </h1>
+        Test Video
+      </h2>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            background: "#1a1a1a",
-            padding: "18px",
-            borderRadius: "14px",
-          }}
-        >
-          <div>
-            <h2
-              style={{
-                margin: 0,
-                fontSize: "24px",
-              }}
-            >
-              Ray’sStream Creator
-            </h2>
+      <p
+        style={{
+          color: "#aaa",
+          fontSize: "18px",
+        }}
+      >
+        2,431 views
+      </p>
 
-            <p
-              style={{
-                color: "#aaa",
-                marginTop: "6px",
-                fontSize: "18px",
-              }}
-            >
-              {subscribers.toLocaleString()} subscribers
-            </p>
-          </div>
-
-          <button
-            onClick={handleSubscribe}
+      <div
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          alignItems: "center",
+          gap: "15px",
+        }}
+      >
+        <div>
+          <h3
             style={{
-              background: subscribed ? "#333" : "#ff0000",
-              color: "white",
-              border: "none",
-              padding: "14px 26px",
-              borderRadius: "999px",
-              fontSize: "18px",
-              fontWeight: "bold",
-              cursor: "pointer",
+              margin: 0,
+              fontSize: "22px",
             }}
           >
-            {subscribed ? "Subscribed" : "Subscribe"}
-          </button>
+            Ray’sStream
+          </h3>
+
+          <p
+            style={{
+              margin: 0,
+              color: "#aaa",
+            }}
+          >
+            1 subscriber
+          </p>
         </div>
+
+        <button
+          style={{
+            background: "red",
+            color: "white",
+            border: "none",
+            padding: "12px 22px",
+            borderRadius: "999px",
+            fontWeight: "bold",
+            fontSize: "16px",
+            cursor: "pointer",
+          }}
+        >
+          Subscribe
+        </button>
       </div>
-    </div>
+    </main>
   );
-} 
+}
