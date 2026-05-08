@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Subscription {
+  id        Int      @id @default(autoincrement())
+  channelId String
+  userId    String
+  createdAt DateTime @default(now())
+
+  @@unique([channelId, userId])
+} 
