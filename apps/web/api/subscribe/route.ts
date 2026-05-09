@@ -6,43 +6,31 @@ const prisma = new PrismaClient()
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-    const channel = body.channel || "Unknown"
+    const channelId = body.channelId
 
-    const existing = await prisma.subscription.findFirst({
-      where: {
-        channel
-      }
-    })
-
-    if (existing) {
-      return NextResponse.json({
-        success: true,
-        subscribed: true,
-        total: await prisma.subscription.count()
-      })
+    if (!channelId) {
+      return NextResponse.json(
+        { error: "Missing channelId" },
+        { status: 400 }
+      )
     }
 
-    await prisma.subscription.create({
+    const sub = await prisma.subscription.create({
       data: {
-        channel
-      }
+        channelId,
+      },
     })
-
-    const total = await prisma.subscription.count()
 
     return NextResponse.json({
       success: true,
-      subscribed: true,
-      total
+      sub,
     })
   } catch (error) {
     console.error(error)
 
     return NextResponse.json(
-      {
-        success: false
-      },
+      { error: "Server error" },
       { status: 500 }
     )
   }
-}
+} 
