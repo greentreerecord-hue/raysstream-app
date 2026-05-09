@@ -14,4 +14,8 @@ model Subscription {
   createdAt DateTime @default(now())
 
   @@unique([channelId, userId])
+} model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
 } 

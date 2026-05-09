@@ -1,4 +1,4 @@
-generator client {
+ generator client {
   provider = "prisma-client-js"
 }
 
@@ -7,8 +7,8 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model Subscriber {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  createdAt DateTime @default(now())
+model Subscription {
+  id          String   @id @default(cuid())
+  channelSlug String
+  createdAt   DateTime @default(now())
 } 

@@ -1,32 +1,32 @@
-export default function Home() {
+export default function HomePage() {
   return (
     <main
       style={{
         minHeight: "100vh",
-        background: "black",
+        background: "#0f0f0f",
         color: "white",
-        padding: "20px",
+        padding: "40px",
+        fontFamily: "Arial",
       }}
     >
-      <h1 style={{ fontSize: "40px", marginBottom: "20px" }}>Ray’sStream</h1>
+      <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>
+        Ray'sStream
+      </h1>
+
+      <p style={{ marginBottom: "30px" }}>
+        YouTube but better.
+      </p>
 
       <video
-        src="/videos/video2.mp4"
         controls
-        autoPlay
-        playsInline
+        width="800"
         style={{
-          width: "100%",
-          maxWidth: "900px",
-          borderRadius: "18px",
-          display: "block",
-          margin: "0 auto",
+          borderRadius: "16px",
+          maxWidth: "100%",
         }}
-      />
-
-      <h2 style={{ marginTop: "20px", fontSize: "24px" }}>
-        Now playing video2.mp4
-      </h2>
+      >
+        <source src="/videos/video2.mp4" type="video/mp4" />
+      </video>
     </main>
   );
-}
+} 

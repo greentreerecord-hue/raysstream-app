@@ -1,14 +1,30 @@
-export async function GET() {
-  return Response.json({
-    success: true,
-    message: "Subscribe API is working",
-    subscribers: 129,
-  });
-}
+import { NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
 
-export async function POST() {
-  return Response.json({
-    success: true,
-    subscribers: 129,
-  });
-}
+const prisma = new PrismaClient();
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+
+    const subscription = await prisma.subscription.create({
+      data: {
+        channelSlug: body.channelSlug || "default-channel",
+      },
+    });
+
+    return NextResponse.json({
+      success: true,
+      subscription,
+    });
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json(
+      {
+        success: false,
+      },
+      { status: 500 }
+    );
+  }
+} 
