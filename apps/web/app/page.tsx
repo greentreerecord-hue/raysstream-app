@@ -1,32 +1,59 @@
 export default function HomePage() {
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#0f0f0f",
-        color: "white",
-        padding: "40px",
-        fontFamily: "Arial",
-      }}
-    >
-      <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>
-        Ray'sStream
+    <main className="min-h-screen bg-black text-white p-8">
+      <h1 className="text-5xl font-bold mb-6 text-red-500">
+        🎬 Ray’sStream
       </h1>
 
-      <p style={{ marginBottom: "30px" }}>
-        YouTube but better.
+      <p className="text-gray-300 mb-10">
+        Watch trending videos from creators around the world.
       </p>
 
-      <video
-        controls
-        width="800"
-        style={{
-          borderRadius: "16px",
-          maxWidth: "100%",
-        }}
-      >
-        <source src="/videos/video2.mp4" type="video/mp4" />
-      </video>
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg">
+          <video
+            controls
+            className="w-full"
+            src="https://www.w3schools.com/html/mov_bbb.mp4"
+          />
+
+          <div className="p-4">
+            <h2 className="text-xl font-semibold">
+              Space Adventure
+            </h2>
+
+            <p className="text-gray-400 text-sm mt-2">
+              1.2M views • 2 days ago
+            </p>
+
+            <button className="mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-xl font-semibold">
+              Subscribe
+            </button>
+          </div>
+        </div>
+
+        <div className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg">
+          <video
+            controls
+            className="w-full"
+            src="https://www.w3schools.com/html/movie.mp4"
+          />
+
+          <div className="p-4">
+            <h2 className="text-xl font-semibold">
+              Ocean Documentary
+            </h2>
+
+            <p className="text-gray-400 text-sm mt-2">
+              845K views • 5 days ago
+            </p>
+
+            <button className="mt-4 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-xl font-semibold">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
   );
 } 
