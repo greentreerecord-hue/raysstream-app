@@ -1,42 +1,39 @@
-<div className="max-w-6xl mx-auto px-4 py-6">
-  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-   
-    {/* VIDEO AREA */}
-    <div className="lg:col-span-2">
-      <video
-        controls
-        className="w-full rounded-2xl bg-black"
-      >
-        <source src={video.url} type="video/mp4" />
-      </video>
+import { notFound } from "next/navigation";
 
-      <h1 className="text-2xl font-bold mt-4">
-        {video.title}
-      </h1>
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
-      <div className="flex items-center justify-between mt-4">
-        <div>
-          <p className="font-semibold text-lg">
-            Ray'sStream Creator
-          </p>
+export default function WatchPage({ params }: PageProps) {
+  const { slug } = params;
 
-          <p className="text-sm text-gray-400">
-            {video.views || 0} views
-          </p>
-        </div>
+  if (!slug) {
+    notFound();
+  }
 
-        <button className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-full font-semibold transition">
+  return (
+    <main className="min-h-screen bg-black text-white p-6">
+      <div className="max-w-5xl mx-auto">
+        <video
+          controls
+          className="w-full rounded-xl mb-6"
+          src="/video3.mp4"
+        />
+
+        <h1 className="text-3xl font-bold mb-2">
+          Ray’sStream Video
+        </h1>
+
+        <p className="text-gray-400 mb-6">
+          Watching slug: {slug}
+        </p>
+
+        <button className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-xl font-semibold">
           Subscribe
         </button>
       </div>
-    </div>
-
-    {/* SIDEBAR */}
-    <div className="space-y-4">
-      <div className="bg-zinc-900 rounded-xl p-4">
-        Up Next videos
-      </div>
-    </div>
-
-  </div>
-</div> 
+    </main>
+  );
+}  
