@@ -1,6 +1,9 @@
-export const metadata = {
+import "./globals.css";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Ray'sStream",
-  description: "YouTube but better",
+  description: "Watch trending videos from creators around the world.",
 };
 
 export default function RootLayout({
@@ -10,7 +13,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0 }}>
+      <body
+        style={{
+          margin: 0,
+          background: "#0f0f0f",
+          color: "white",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
         {children}
       </body>
     </html>
