@@ -1,5 +1,1 @@
-{
-  "/page": "app/page.js",
-  "/watch-test/page": "app/watch-test/page.js",
-  "/watch/[slug]/page": "app/watch/[slug]/page.js"
-}
+{}

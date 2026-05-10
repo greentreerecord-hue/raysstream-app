@@ -2,14 +2,10 @@
   "name": "raysstream",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter web dev",
-    "build": "pnpm --filter web build",
-    "start": "pnpm --filter web start",
-    "postinstall": "pnpm prisma generate"
+    "dev": "cd apps/web && pnpm dev",
+    "build": "cd apps/web && pnpm build",
+    "start": "cd apps/web && pnpm start",
+    "lint": "cd apps/web && pnpm lint"
   },
-  "dependencies": {
-    "@prisma/client": "latest",
-    "prisma": "latest"
-  },
-  "devDependencies": {}
+  "packageManager": "pnpm@9.12.3"
 } 
