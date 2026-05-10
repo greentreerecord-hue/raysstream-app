@@ -1,45 +1,76 @@
-export default function WatchTestPage() {
+import Link from "next/link";
+
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+const videos: Record<string, { title: string; src: string; creator: string }> = {
+  video1: {
+    title: "Ray’sStream Video 1",
+    src: "/videos/video1.mp4",
+    creator: "Ray’sStream",
+  },
+  video2: {
+    title: "Ray’sStream Video 2",
+    src: "/videos/video2.mp4",
+    creator: "Ray’sStream",
+  },
+  video3: {
+    title: "Space Ship Video 3",
+    src: "/videos/video3.mp4",
+    creator: "Ray’sStream",
+  },
+};
+
+export default function WatchPage({ params }: PageProps) {
+  const video = videos[params.slug] ?? videos.video3;
+
   return (
-    <main className="min-h-screen bg-[#0f172a] text-white">
-      <div className="mx-auto max-w-5xl px-4 py-6">
-        <div className="aspect-video w-full overflow-hidden rounded-2xl bg-black">
-          <video
-            className="h-full w-full"
-            controls
-            autoPlay
-            muted
-            playsInline
-            src="/videos/its-cool.mp4"
-          />
-        </div>
+    <main style={{ padding: "24px", color: "white", background: "#020617", minHeight: "100vh" }}>
+      <Link href="/" style={{ color: "#60a5fa" }}>
+        ← Back home
+      </Link>
 
-        <div className="mt-5">
-          <h1 className="text-3xl font-bold">Test Video</h1>
-          <p className="mt-2 text-gray-400">2,431 views</p>
-        </div>
+      <h1 style={{ fontSize: "32px", marginTop: "20px" }}>{video.title}</h1>
+      <p style={{ color: "#94a3b8" }}>Creator: {video.creator}</p>
 
-        <div className="mt-5 flex items-center gap-4 border-b border-white/10 pb-5">
-          <div>
-            <p className="text-xl font-bold">Ray&apos;sStream</p>
-            <p className="text-sm text-gray-400">1 subscriber</p>
-          </div>
+      <video
+        src={video.src}
+        controls
+        autoPlay
+        style={{
+          width: "100%",
+          maxWidth: "900px",
+          marginTop: "20px",
+          borderRadius: "16px",
+          background: "black",
+        }}
+      />
 
-          <button className="rounded-full bg-red-600 px-5 py-2 font-bold text-white hover:bg-red-500">
-            Subscribe
-          </button>
+      <div style={{ marginTop: "20px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+        <button style={{ padding: "12px 18px", borderRadius: "999px", fontWeight: "bold" }}>
+          👍 Like
+        </button>
 
-          <button className="rounded-full bg-yellow-500 px-5 py-2 font-bold text-black hover:bg-yellow-400">
-            Join $4.99/mo
-          </button>
-        </div>
+        <button
+          style={{
+            padding: "12px 18px",
+            borderRadius: "999px",
+            fontWeight: "bold",
+            background: "#ef4444",
+            color: "white",
+            border: "none",
+          }}
+        >
+          Subscribe
+        </button>
 
-        <div className="mt-6 rounded-2xl bg-white/10 p-4">
-          <p className="font-bold">About this video</p>
-          <p className="mt-2 text-gray-300">
-            Welcome to Ray&apos;sStream. Subscribe or join monthly to support the creator.
-          </p>
-        </div>
+        <button style={{ padding: "12px 18px", borderRadius: "999px", fontWeight: "bold" }}>
+          Not interested
+        </button>
       </div>
     </main>
   );
-}  
+}
