@@ -1,55 +1,42 @@
-"use client";
+<div className="max-w-6xl mx-auto px-4 py-6">
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+   
+    {/* VIDEO AREA */}
+    <div className="lg:col-span-2">
+      <video
+        controls
+        className="w-full rounded-2xl bg-black"
+      >
+        <source src={video.url} type="video/mp4" />
+      </video>
 
-import { useState } from "react";
+      <h1 className="text-2xl font-bold mt-4">
+        {video.title}
+      </h1>
 
-export default function WatchPage() {
-  const [subscribed, setSubscribed] = useState(false);
+      <div className="flex items-center justify-between mt-4">
+        <div>
+          <p className="font-semibold text-lg">
+            Ray'sStream Creator
+          </p>
 
-  return (
-    <main className="bg-black text-white min-h-screen p-4">
-      <div className="max-w-5xl mx-auto">
-
-        <video
-          className="w-full rounded-2xl mb-4 bg-black"
-          controls
-        >
-          <source src="/videos/video2.mp4" type="video/mp4" />
-        </video>
-
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1 className="text-3xl font-bold">
-              Scenic Album
-            </h1>
-
-            <p className="text-gray-400 mt-1">
-              1,245 views • Ray'sStream
-            </p>
-          </div>
-
-          <button
-            onClick={() => setSubscribed(!subscribed)}
-            className={`px-6 py-3 rounded-full font-bold text-lg transition-all ${
-              subscribed
-                ? "bg-gray-700 text-white"
-                : "bg-red-600 hover:bg-red-700 text-white"
-            }`}
-          >
-            {subscribed ? "Subscribed" : "Subscribe"}
-          </button>
-        </div>
-
-        <div className="bg-zinc-900 rounded-2xl p-5">
-          <h2 className="text-xl font-semibold mb-2">
-            About this video
-          </h2>
-
-          <p className="text-gray-300">
-            Welcome to Ray’sStream. Video playback and subscriptions are now working.
+          <p className="text-sm text-gray-400">
+            {video.views || 0} views
           </p>
         </div>
 
+        <button className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-full font-semibold transition">
+          Subscribe
+        </button>
       </div>
-    </main>
-  );
-} 
+    </div>
+
+    {/* SIDEBAR */}
+    <div className="space-y-4">
+      <div className="bg-zinc-900 rounded-xl p-4">
+        Up Next videos
+      </div>
+    </div>
+
+  </div>
+</div> 

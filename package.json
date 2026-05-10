@@ -1,21 +1,15 @@
 {
   "name": "raysstream",
   "private": true,
-  "packageManager": "pnpm@10.0.0",
   "scripts": {
     "dev": "pnpm --filter web dev",
     "build": "pnpm --filter web build",
     "start": "pnpm --filter web start",
-    "postinstall": "prisma generate"
+    "postinstall": "pnpm prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
-    "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@prisma/client": "latest",
+    "prisma": "latest"
   },
-  "devDependencies": {
-    "prisma": "^5.22.0",
-    "typescript": "^5.0.0"
-  }
+  "devDependencies": {}
 } 
